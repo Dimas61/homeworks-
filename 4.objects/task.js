@@ -1,19 +1,31 @@
-function Student(name, gender, age) {
+class Student { 
+    constructor(name, gender, age) {
+      this.name = name;
+      this.gender = gender;
+      this.age = age;
+      this.marks = [];
+    }
   
-}
-
-Student.prototype.setSubject = function (subjectName) {
+    setSubject(subjectName) {
+     this.subject = subjectName;
+    }
   
-}
-
-Student.prototype.addMarks = function (...marks) {
+    addMarks(...marksToAdd) {
+      if(this.hasOwnProperty('marks')) {
+       this.marks.push(...marksToAdd)
+      }
+    }
   
-}
-
-Student.prototype.getAverage = function () {
+    getAverage() {
+      if(this.hasOwnProperty('marks') === false || this.marks.length === 0) {
+        return 0;
+      }
+     return this.marks.reduce((acc, item) => acc + item, 0) / this.marks.length
+    }
   
-}
-
-Student.prototype.exclude = function (reason) {
-  
-}
+    exclude(reason) {
+      delete this.subject;
+      delete this.marks;
+      this.excluded = reason
+    }
+  }
