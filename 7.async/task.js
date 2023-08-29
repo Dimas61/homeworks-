@@ -1,7 +1,7 @@
 class AlarmClock {
     constructor() {
       this.alarmCollection = [];
-      this.intervalId;
+      this.intervalId = null;
     }
 
     addClock (time, callback) {
@@ -37,7 +37,7 @@ class AlarmClock {
     start () {
        if (this.intervalId !== undefined) {
         return;
-       } else {
+       } 
         this.intervalId = setInterval(() => {
             this.alarmCollection.forEach((elem) => {
                 if ((this.getCurrentFormattedTime() === elem.time) && elem.canCall === true) {
@@ -46,7 +46,6 @@ class AlarmClock {
                 }
             })
         }, 1000);
-       }
     }
 
     stop() {
